@@ -8,7 +8,7 @@
   "homepage": "http://micropython.org",
   "dependencies":{
     "mbed-classic": "~0.0.4",
-    "microbit-dal":"jasonrandrews/microbit-dal"
+    "microbit-dal":"jasonrandrews/microbit-dal#master"
   },
   "extraIncludes":[
     "inc",
