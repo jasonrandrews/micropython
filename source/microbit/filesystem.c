@@ -26,7 +26,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <errno.h>
-#include <sys/stat.h>
+//#include <sys/stat.h>
 
 #include "py/nlr.h"
 #include "py/obj.h"
@@ -342,7 +342,8 @@ static int advance(file_descriptor_obj *self, uint32_t n, bool write) {
             if (next_chunk == FILE_NOT_FOUND) {
                 clear_file(self->start_chunk);
                 self->open = false;
-                return ENOSPC;
+                //return ENOSPC;
+                return 99;
             }
             /* Link next chunk to this one */
             persistent_write_byte_unchecked(&(file_system_chunks[self->seek_chunk].next_chunk), next_chunk);
@@ -358,7 +359,8 @@ mp_uint_t microbit_file_read(mp_obj_t obj, void *buf, mp_uint_t size, int *errco
     file_descriptor_obj *self = (file_descriptor_obj *)obj;
     check_file_open(self);
     if (self->writable || file_system_chunks[self->start_chunk].marker == FREED_CHUNK) {
-        *errcode = EBADF;
+        //*errcode = EBADF;
+        *errcode = 99;
         return MP_STREAM_ERROR;
     }
     uint32_t bytes_read = 0;
@@ -388,7 +390,8 @@ mp_uint_t microbit_file_write(mp_obj_t obj, const void *buf, mp_uint_t size, int
     file_descriptor_obj *self = (file_descriptor_obj *)obj;
     check_file_open(self);
     if (!self->writable || file_system_chunks[self->start_chunk].marker == FREED_CHUNK) {
-        *errcode = EBADF;
+        //*errcode = EBADF;
+        *errcode = 99;
         return MP_STREAM_ERROR;
     }
     uint32_t len = size;

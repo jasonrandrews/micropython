@@ -7,7 +7,7 @@
   "author": "Damien P George <damien.p.george@gmail.com>",
   "homepage": "http://micropython.org",
   "dependencies":{
-    "mbed-classic": "~0.0.4",
+    "mbed-classic": "jasonrandrews/mbed-classic#master",
     "microbit-dal":"jasonrandrews/microbit-dal#master"
   },
   "extraIncludes":[

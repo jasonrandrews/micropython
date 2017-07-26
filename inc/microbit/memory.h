@@ -27,9 +27,11 @@
 #ifndef __MICROPY_INCLUDED_MEMORY_H__
 #define __MICROPY_INCLUDED_MEMORY_H__
 
+/*
 extern uint32_t __data_end__;
 extern uint32_t __data_start__;
 extern uint32_t __etext;
+*/
 
 inline char *rounddown(char *addr, uint32_t align) {
     return (char *)(((uint32_t)addr)&(-align));
@@ -41,7 +43,8 @@ inline char *roundup(char *addr, uint32_t align) {
 
 /** The end of the code area in flash ROM (text plus read-only copy of data area) */
 inline char *microbit_end_of_code() {
-    return (char *)(&__etext + (&__data_end__ - &__data_start__));
+    //return (char *)(&__etext + (&__data_end__ - &__data_start__));
+    return (char *)0x30000;
 }
 
 inline char *microbit_end_of_rom() {
