@@ -99,9 +99,9 @@ void mp_run(void) {
     mp_stack_set_limit(1800); // stack is 2k
 
     // allocate the uPy heap statically in the available RAM between heap and stack
-    extern uint32_t Image$$ARM_LIB_STACK$$ZI$$Base;
-    extern uint32_t Image$$ARM_LIB_STACK$$ZI$$Limit;
-    gc_init(&Image$$ARM_LIB_STACK$$ZI$$Base, &Image$$ARM_LIB_STACK$$ZI$$Limit);
+    extern uint32_t Image$$PY_HEAP$$ZI$$Base;
+    extern uint32_t Image$$PY_HEAP$$ZI$$Limit;
+    gc_init(&Image$$PY_HEAP$$ZI$$Base, &Image$$PY_HEAP$$ZI$$Limit);
     //extern uint32_t __HeapLimit;
     //extern uint32_t __StackLimit;
     //gc_init(&__HeapLimit, &__StackLimit);
