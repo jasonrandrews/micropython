@@ -41,8 +41,6 @@
     .text
     .align  2
 
-    .eabi_attribute 25, 1
-
 /**************************************/
 // mp_uint_t nlr_push(r0=nlr_buf_t *nlr)
 
